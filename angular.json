@@ -110,5 +110,13 @@
       }
     }
   },
-  "defaultProject": "slickr"
+  "defaultProject": "slickr",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  },
+  "schematics": {
+    "@ngrx/schematics:component": {
+      "styleext": "scss"
+    }
+  }
 }
