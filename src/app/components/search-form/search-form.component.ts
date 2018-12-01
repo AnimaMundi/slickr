@@ -26,6 +26,9 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   @Output()
   public searchQueryChange = new EventEmitter<string>();
 
+  @Output()
+  public formSubmit = new EventEmitter<void>();
+
   private destroy$ = new Subject<void>();
 
   public ngOnInit(): void {
@@ -39,5 +42,9 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  public onFormSubmitted(): void {
+    this.formSubmit.emit();
   }
 }

@@ -3,7 +3,11 @@ import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 
 import { AppState } from '@store/app';
-import { getSearchQuery, SearchQueryChangedAction } from '@store/search';
+import {
+  getSearchQuery,
+  SearchQueryChangedAction,
+  SearchQueryFormSubmittedAction,
+} from '@store/search';
 
 @Component({
   selector: 'app-search-form-container',
@@ -21,5 +25,9 @@ export class SearchFormContainerComponent implements OnInit {
 
   public onSearchQueryChanged(searchQuery: string): void {
     this.store$.dispatch(new SearchQueryChangedAction(searchQuery));
+  }
+
+  public onSearchQueryFormSubmitted(): void {
+    this.store$.dispatch(new SearchQueryFormSubmittedAction());
   }
 }

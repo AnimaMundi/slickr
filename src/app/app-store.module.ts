@@ -6,13 +6,14 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { appReducer, metaReducers, CustomSerializer } from '@store/app';
+import { SearchEffects } from '@store/search';
 import { environment } from '@env';
 
 @NgModule({
   imports: [
     StoreModule.forRoot(appReducer, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([SearchEffects]),
     StoreRouterConnectingModule.forRoot({
       serializer: CustomSerializer,
     }),
