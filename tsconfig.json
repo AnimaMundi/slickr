@@ -12,6 +12,10 @@
     "importHelpers": true,
     "target": "es5",
     "typeRoots": ["node_modules/@types"],
+    "paths": {
+      "@store/*": ["./src/app/store/*"],
+      "@env": ["./src/environments/environment"]
+    },
     "types": ["jest"],
     "lib": ["es2018", "dom"]
   }

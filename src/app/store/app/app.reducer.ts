@@ -1,9 +1,10 @@
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { routerReducer } from '@ngrx/router-store';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '@env';
+import { searchReducer, searchStateKey } from '@store/search';
+
 import { AppState } from './app.state';
-import { searchReducer, searchStateKey } from '../search';
 
 export const appReducer: ActionReducerMap<AppState> = {
   router: routerReducer,

@@ -10,14 +10,8 @@ import {
   MatIconModule,
 } from '@angular/material';
 
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-
-import { appReducer, metaReducers, CustomSerializer } from './store/app';
 import { AppRoutingModule } from './app-routing.module';
-import { environment } from '../environments/environment';
+import { AppStoreModule } from './app-store.module';
 
 import { AppComponent } from './app.component';
 import {
@@ -47,14 +41,8 @@ import {
     MatIconModule,
 
     AppRoutingModule,
-    StoreModule.forRoot(appReducer, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot({
-      serializer: CustomSerializer,
-    }),
+    AppStoreModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

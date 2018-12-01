@@ -1,4 +1,4 @@
-@import '../common/index';
+@import 'common';
 
 @include mat-core();
 @include angular-material-theme($theme);

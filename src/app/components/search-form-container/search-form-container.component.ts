@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 
-import { AppState } from '../../store/app';
-import { getSearchQuery, SearchQueryChangedAction } from '../../store/search';
+import { AppState } from '@store/app';
+import { getSearchQuery, SearchQueryChangedAction } from '@store/search';
 
 @Component({
   selector: 'app-search-form-container',
@@ -15,7 +15,7 @@ export class SearchFormContainerComponent implements OnInit {
 
   constructor(private readonly store$: Store<AppState>) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     this.searchQuery$ = this.store$.pipe(select(getSearchQuery));
   }
 

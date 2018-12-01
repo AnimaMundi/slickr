@@ -2,8 +2,9 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { StoreModule } from '@ngrx/store';
 
+import { appReducer } from '@store/app';
+
 import { SearchFormContainerComponent } from '../search-form-container.component';
-import { appReducer } from '../../../store/app';
 
 describe('SearchFormContainerComponent', () => {
   let component: SearchFormContainerComponent;
