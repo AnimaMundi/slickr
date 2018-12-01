@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterComponent should compile the template 1`] = `
+<app-footer>
+  <p>
+    Nathan Mc Grath, 2018
+  </p><p>
+    <a
+      href="https://nathan-mcgrath.com"
+      rel="noopener"
+      target="_blank"
+    >
+      nathan-mcgrath.com
+    </a>
+  </p>
+</app-footer>
+`;

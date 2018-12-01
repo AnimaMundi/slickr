@@ -1,0 +1,18 @@
+@import '../../../styles/common/index';
+
+.search-form {
+  background-color: mat-color($primary, 300);
+  color: mat-color($primary, '300-contrast');
+
+  display: flex;
+  justify-content: center;
+  padding: spacing(3) spacing(2);
+
+  &__field {
+    min-width: 60%;
+  }
+
+  &__label {
+    color: mat-color($primary, '300-contrast');
+  }
+}

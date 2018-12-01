@@ -1,0 +1,11 @@
+@import 'variables';
+
+@function spacing($level) {
+  $spacing: $base-spacing;
+
+  @for $i from 1 through $level {
+    $spacing: $spacing * $golden-ratio;
+  }
+
+  @return $spacing;
+}

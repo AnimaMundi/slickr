@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppComponent should compile the template 1`] = `
+<app-root>
+  <header>
+    <app-header />
+  </header><main>
+    <app-search-form-container />
+    <router-outlet />
+  </main><footer>
+    <app-footer />
+  </footer>
+</app-root>
+`;

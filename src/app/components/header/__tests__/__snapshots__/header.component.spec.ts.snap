@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderComponent should compile the template 1`] = `
+<app-header>
+  <mat-toolbar
+    color="primary"
+  >
+    <mat-toolbar-row>
+      <span>
+        Slickr
+      </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</app-header>
+`;
