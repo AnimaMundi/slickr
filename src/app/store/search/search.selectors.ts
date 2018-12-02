@@ -8,3 +8,13 @@ export const getSearchQuery = createSelector(
   selectSearchState,
   ({ query }) => query,
 );
+
+export const getSearchResults = createSelector(
+  selectSearchState,
+  ({ results }) => results,
+);
+
+export const getPhotoSearchResults = createSelector(
+  getSearchResults,
+  ({ photos }) => photos,
+);

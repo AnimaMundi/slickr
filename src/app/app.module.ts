@@ -9,6 +9,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatIconModule,
+  MatCardModule,
+  MatButtonModule,
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +20,8 @@ import { AppComponent } from './app.component';
 import {
   HeaderComponent,
   FooterComponent,
+  ResultListComponent,
+  ResultListContainerComponent,
   SearchFormComponent,
   SearchFormContainerComponent,
 } from './components';
@@ -27,6 +31,8 @@ import {
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    ResultListComponent,
+    ResultListContainerComponent,
     SearchFormComponent,
     SearchFormContainerComponent,
   ],
@@ -41,6 +47,8 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    MatCardModule,
+    MatButtonModule,
 
     AppRoutingModule,
     AppStoreModule,

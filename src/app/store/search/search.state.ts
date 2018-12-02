@@ -1,5 +1,10 @@
 export interface IPhotoSearchResult {
   id: string;
+  secret: string;
+  farm: string;
+  server: string;
+  title: string;
+  owner: string;
 }
 
 export interface SearchState {

@@ -6,6 +6,7 @@ exports[`AppComponent should compile the template 1`] = `
     <app-header />
   </header><main>
     <app-search-form-container />
+    <app-result-list-container />
     <router-outlet />
   </main><footer>
     <app-footer />

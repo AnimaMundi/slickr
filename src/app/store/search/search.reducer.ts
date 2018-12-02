@@ -21,7 +21,16 @@ export const searchReducer = (
           pages: action.payload.photos.pages,
           total: Number(action.payload.photos.total),
           photos: state.results.photos.concat(
-            action.payload.photos.photo.map(({ id }) => ({ id })),
+            action.payload.photos.photo.map(
+              ({ id, farm, secret, server, title, owner }) => ({
+                farm: String(farm),
+                id,
+                secret,
+                server,
+                title,
+                owner,
+              }),
+            ),
           ),
         },
       };
