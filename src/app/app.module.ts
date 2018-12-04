@@ -19,7 +19,6 @@ import { AppStoreModule } from './app-store.module';
 import { AppComponent } from './app.component';
 import {
   HeaderComponent,
-  FooterComponent,
   ResultListComponent,
   ResultListContainerComponent,
   SearchFormComponent,
@@ -30,7 +29,6 @@ import {
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
     ResultListComponent,
     ResultListContainerComponent,
     SearchFormComponent,

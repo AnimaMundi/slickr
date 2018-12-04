@@ -1,12 +1,22 @@
+@import 'common';
+
+:host {
+  position: relative;
+}
+
 .photo-result-card {
-  margin: 20px;
-  max-width: 300px;
+  @include mat-elevation(2);
+
+  position: absolute;
+  box-sizing: border-box;
+  width: 320px; // must match the expected width of the images (search.effects.ts)
 
   &__header {
     display: block;
   }
 
   &__title {
+    height: 32px;
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;

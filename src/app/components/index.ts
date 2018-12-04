@@ -1,4 +1,3 @@
-export * from './footer';
 export * from './header';
 export * from './result-list';
 export * from './result-list-container';

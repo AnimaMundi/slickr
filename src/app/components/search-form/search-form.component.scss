@@ -1,6 +1,8 @@
 @import 'common';
 
 .search-form {
+  @include mat-elevation(2);
+
   background-color: mat-color($primary, 300);
   color: mat-color($primary, '300-contrast');
 
@@ -9,6 +11,7 @@
   padding: spacing(3) spacing(2);
 
   &__field {
+    margin-top: spacing(2);
     min-width: 60%;
   }
 

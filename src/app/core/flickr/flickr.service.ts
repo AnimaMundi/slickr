@@ -19,6 +19,13 @@ export class FlickrService {
     });
   }
 
+  // [TODO] - remove any
+  public getPhotoSizes(photoId: string): Observable<any> {
+    return this.makeRequest('flickr.photos.getSizes', {
+      photo_id: photoId,
+    });
+  }
+
   private makeRequest<T>(
     method: string,
     extParams: { [param: string]: string | string[] },

@@ -5,6 +5,8 @@ export interface IPhotoSearchResult {
   server: string;
   title: string;
   owner: string;
+  width: number;
+  height: number;
 }
 
 export interface SearchState {

@@ -1,0 +1,8 @@
+@import 'common';
+
+:host {
+  @include mat-elevation(4);
+
+  display: block;
+  position: relative;
+}

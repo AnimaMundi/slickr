@@ -1,16 +1,21 @@
-<ng-container *ngFor="let photo of photos">
-  <mat-card class="photo-result-card">
+<ng-container *ngFor="let photo of photos; index as i">
+  <mat-card
+    class="photo-result-card"
+    [style.left]="getPhotoLeft(i)"
+    [style.top]="getPhotoTop(i)"
+  >
     <mat-card-header class="photo-result-card__header">
       <mat-card-title class="photo-result-card__title">{{
         photo.title
       }}</mat-card-title>
     </mat-card-header>
 
-    <img mat-card-image [src]="getPhotoUrl(photo)" [alt]="photo.title" />
+    <img mat-card-image [src]="photo.url" [alt]="photo.title" />
 
     <mat-card-actions>
       <a
         mat-button
+        color="primary"
         [href]="getPhotoPageUrl(photo)"
         target="_blank"
         rel="noopener"
