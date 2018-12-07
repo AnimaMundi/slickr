@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { environment } from '@env';
 
-import { IPhotosSearchResponse } from './models';
+import { IPhotosSearchResponse, IPhotoSizesApiResponse } from './models';
 
 @Injectable({
   providedIn: 'root',
@@ -12,15 +12,18 @@ import { IPhotosSearchResponse } from './models';
 export class FlickrService {
   constructor(private readonly http: HttpClient) {}
 
-  public searchPhotos(tags: string): Observable<IPhotosSearchResponse> {
+  public searchPhotos(
+    tags: string,
+    page: number = 1,
+  ): Observable<IPhotosSearchResponse> {
     return this.makeRequest('flickr.photos.search', {
       per_page: '20',
+      page: String(page),
       tags,
     });
   }
 
-  // [TODO] - remove any
-  public getPhotoSizes(photoId: string): Observable<any> {
+  public getPhotoSizes(photoId: string): Observable<IPhotoSizesApiResponse> {
     return this.makeRequest('flickr.photos.getSizes', {
       photo_id: photoId,
     });

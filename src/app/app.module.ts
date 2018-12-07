@@ -11,6 +11,7 @@ import {
   MatIconModule,
   MatCardModule,
   MatButtonModule,
+  MatProgressBarModule,
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -47,6 +48,7 @@ import {
     MatIconModule,
     MatCardModule,
     MatButtonModule,
+    MatProgressBarModule,
 
     AppRoutingModule,
     AppStoreModule,

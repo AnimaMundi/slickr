@@ -1,1 +1,5 @@
-<app-result-list [photos]="photoSearchResults$ | async"></app-result-list>
+<app-result-list
+  [photos]="photoSearchResults$ | async"
+  [isLoading]="isLoading$ | async"
+  (listEndScroll)="onListEndScrolled()"
+></app-result-list>

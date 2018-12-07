@@ -1,6 +1,35 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  HostListener,
+  ViewChildren,
+  QueryList,
+  ElementRef,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 import { IPhotoSearchResult } from '@store/search';
+
+const colsPerRow = 4;
+
+// must match the expected width of the images (search.effects.ts)
+const colWidth = 320;
+const gutter = 20;
+
+/**
+ * Internal card padding: 32px;
+ *  Padding Top: 16px;
+ *  Padding Bottom: 16px;
+ * Header height: 32px;
+ * Header margin bottom: 12px;
+ * Image margin bottom: 16px;
+ * Actions height: 44px;
+ *
+ * Total Height (Without image): 136px;
+ */
+const cardHeightWithoutImage = 136;
 
 @Component({
   selector: 'app-result-list',
@@ -12,22 +41,29 @@ export class ResultListComponent {
   @Input()
   public photos: IPhotoSearchResult[];
 
-  private colsPerRow = 4;
-  private colWidth = 320; // must match the expected width of the images (search.effects.ts)
-  private gutter = 20;
+  @Input()
+  public isLoading: boolean;
 
-  /**
-   * Internal card padding: 32px;
-   *  Padding Top: 16px;
-   *  Padding Bottom: 16px;
-   * Header height: 32px;
-   * Header margin bottom: 12px;
-   * Image margin bottom: 16px;
-   * Actions height: 44px;
-   *
-   * Total Height (Without image): 136px;
-   */
-  private cardHeightWithoutImage = 136;
+  @ViewChildren('photoResultElement', { read: ElementRef })
+  public photoResultElements: QueryList<ElementRef>;
+
+  @Output()
+  public listEndScroll = new EventEmitter<void>();
+
+  @HostListener('window:scroll', [])
+  public onWindowScroll(): void {
+    const elements = this.photoResultElements.toArray();
+    const element = elements[elements.length - 4];
+
+    const boundingClientRect = element.nativeElement.getBoundingClientRect();
+    const isInViewport =
+      boundingClientRect.top <=
+      (window.innerHeight || document.documentElement.clientHeight);
+
+    if (isInViewport) {
+      this.listEndScroll.emit();
+    }
+  }
 
   public getPhotoUrl(photo: IPhotoSearchResult): string {
     return `https://farm${photo.farm}.staticflickr.com/${photo.server}/${
@@ -40,43 +76,44 @@ export class ResultListComponent {
   }
 
   public getCol(index: number): number {
-    return index % this.colsPerRow;
+    return index % colsPerRow;
   }
 
   public getRow(index: number): number {
-    return Math.floor(index / this.colsPerRow);
+    return Math.floor(index / colsPerRow);
   }
 
-  public getPhotoLeft(index: number): string {
+  public getPhotoLeft(index: number): number {
     const col = this.getCol(index);
 
     if (col === 0) {
-      return `${this.gutter}px`;
+      return gutter;
     }
 
-    return `${col * this.colWidth + col * this.gutter + this.gutter}px`;
+    return col * colWidth + col * gutter + gutter;
   }
 
-  public getPhotoTop(index: number): string {
+  public getPhotoTop(index: number): number {
     const row = this.getRow(index);
 
     if (row === 0) {
-      return `${this.gutter}px`;
+      return gutter;
     }
 
     let top = 0;
     let currentImageIndex = index;
 
-    while (currentImageIndex >= this.colsPerRow) {
-      currentImageIndex -= this.colsPerRow;
-      top +=
-        this.photos[currentImageIndex].height +
-        this.cardHeightWithoutImage +
-        this.gutter;
+    while (currentImageIndex >= colsPerRow) {
+      currentImageIndex -= colsPerRow;
+      top += this.getFullCardHeight(currentImageIndex);
     }
 
-    top += this.gutter;
+    top += gutter;
 
-    return `${top}px`;
+    return top;
+  }
+
+  private getFullCardHeight(index: number): number {
+    return this.photos[index].height + cardHeightWithoutImage + gutter;
   }
 }

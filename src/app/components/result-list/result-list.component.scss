@@ -1,25 +1,37 @@
 @import 'common';
 
-:host {
+.result-list {
   position: relative;
+
+  // 4 * photos = 320px
+  // 5 * gutters (5 * 20px) = 100px
+  // total = 13,80 / 2 = 690px
+  left: calc(50% - 690px);
+
+  &__item {
+    @include mat-elevation(2);
+
+    position: absolute;
+    box-sizing: border-box;
+
+    // must match the expected width of the images (search.effects.ts)
+    width: 320px;
+
+    &-header {
+      display: block;
+    }
+
+    &-title {
+      height: 32px;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }
 
-.photo-result-card {
-  @include mat-elevation(2);
-
-  position: absolute;
-  box-sizing: border-box;
-  width: 320px; // must match the expected width of the images (search.effects.ts)
-
-  &__header {
-    display: block;
-  }
-
-  &__title {
-    height: 32px;
-    max-width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+.progress-bar {
+  position: fixed;
+  top: 0;
 }

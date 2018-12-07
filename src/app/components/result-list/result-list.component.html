@@ -1,26 +1,37 @@
-<ng-container *ngFor="let photo of photos; index as i">
-  <mat-card
-    class="photo-result-card"
-    [style.left]="getPhotoLeft(i)"
-    [style.top]="getPhotoTop(i)"
-  >
-    <mat-card-header class="photo-result-card__header">
-      <mat-card-title class="photo-result-card__title">{{
-        photo.title
-      }}</mat-card-title>
-    </mat-card-header>
+<span class="result-list">
+  <ng-container *ngFor="let photo of photos; index as i">
+    <mat-card
+      #photoResultElement
+      class="result-list__item"
+      [style.left.px]="getPhotoLeft(i)"
+      [style.top.px]="getPhotoTop(i)"
+    >
+      <mat-card-header class="result-list__item-header">
+        <mat-card-title class="result-list__item-title">{{
+          photo.title
+        }}</mat-card-title>
+      </mat-card-header>
 
-    <img mat-card-image [src]="photo.url" [alt]="photo.title" />
+      <img mat-card-image [src]="photo.url" [alt]="photo.title" />
 
-    <mat-card-actions>
-      <a
-        mat-button
-        color="primary"
-        [href]="getPhotoPageUrl(photo)"
-        target="_blank"
-        rel="noopener"
-        >View on Flickr</a
-      >
-    </mat-card-actions>
-  </mat-card>
+      <mat-card-actions>
+        <a
+          mat-button
+          color="primary"
+          [href]="getPhotoPageUrl(photo)"
+          target="_blank"
+          rel="noopener"
+          >View on Flickr</a
+        >
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</span>
+
+<ng-container *ngIf="isLoading">
+  <mat-progress-bar
+    color="accent"
+    mode="indeterminate"
+    class="progress-bar"
+  ></mat-progress-bar>
 </ng-container>

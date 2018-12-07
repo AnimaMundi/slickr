@@ -1,8 +1,8 @@
 import { RouterReducerState } from '@ngrx/router-store';
 
-import { SearchState, searchStateKey } from '@store/search';
+import { ISearchState, searchStateKey } from '@store/search';
 
 export interface AppState {
   router: RouterReducerState;
-  [searchStateKey]: SearchState;
+  [searchStateKey]: ISearchState;
 }
